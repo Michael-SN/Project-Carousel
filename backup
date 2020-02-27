@@ -1,0 +1,78 @@
+const testDrag = document.querySelector('.square');
+const body = document.body;
+
+testDrag.addEventListener('mousedown', mouseDown);
+window.addEventListener('mousemove', mouseMove);
+window.addEventListener('mouseup', mouseUp);
+
+const events = {
+    init: {
+        x: 0,
+        y: 0,
+    },
+    move: {
+        x: 0,
+        y: 0,
+    },
+    end: {
+        x: 0,
+        y: 0
+    }
+}
+
+function mouseDown (event) {
+    console.log('mouseDown', event);
+    events.init.x = event.clientX;
+    events.init.y = event.clientY;
+}
+
+function mouseMove (event) {
+
+    if(events.init.x === 0 || events.init.y === 0) 
+        return;
+
+    const eventX = event.clientX;
+    const eventY = event.clientY;
+
+    const moveX = (-(events.init.x - eventX) + events.end.x);
+    const moveY = (-(events.init.y - eventY) + events.end.y);
+    
+    const bodySize = body.getBoundingClientRect().width;
+    const sizeDrag = testDrag.getBoundingClientRect().width;
+    
+    events.move.x = Math.max(
+        Math.min(moveX, (bodySize - sizeDrag)), 
+    0);
+        
+    events.move.y = moveY
+    
+    testDrag.style.left = events.move.x+'px';
+    testDrag.style.top = events.move.y+'px';
+}
+
+function mouseUp () {
+    events.end.x = events.move.x;
+    events.end.y = events.move.y;
+
+    events.init.x = 0;
+    events.init.y = 0;
+}
+
+
+/// CSS 
+
+
+.square {
+    width: 250px;
+    height: 250px;
+    background: red;
+    display: block;
+    position: relative;
+}
+
+.square h1 {
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}

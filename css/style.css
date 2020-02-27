@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header {
+    padding: 20px;
+    background: #2B59C3;    
+}
+header .title {
+    color: #fff;    
+    text-align: center;
+    font-weight: bold;
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+section {
+    /* height: 600px; */
+    background: #253C78;
+}
+.carrousel {    
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.carrousel .current-slide {    
+    position: relative;    
+    background: #2B59C3;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+.carrousel .current-slide .group-slide {
+    position: relative;    
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.current-slide .slide-fade {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+
+.current-slide .slide-fade img {
+    display: block;
+    max-width: 100%; 
+}
+
+.arrow {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #FFEECF;
+    top: calc(50% - 10px);
+    border-radius: 50%;
+    border: none;    
+}
+
+.arrow.arr-left {    
+    left: 5px;
+    outline: none;
+}
+.arrow.arr-right {    
+    right: 5px;
+    outline: none;   
+}
+
+.arrow.arr-left:after,
+.arrow.arr-right:after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: none;
+    margin: 0 auto;
+    position: relative;
+    transform: rotate(45deg);      
+}
+.arrow.arr-left:after {    
+    border-left: 10px solid #C9A690;
+    border-bottom: 10px solid #C9A690;
+       
+}
+.arrow.arr-right:after {
+    border-top: 10px solid #C9A690;
+    border-right: 10px solid #C9A690;
+}
+
+.dots { 
+    display: block;    
+    position: relative;
+    margin: -26px 0 0 0;
+    font-size: 0;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.dots .dotted {
+    display: inline-block;
+    text-align: center; 
+    padding: 5px;
+    color: #fff;
+    border-radius: 50%;    
+    background: #D36582;
+    margin: 5px;
+}
+.dots .dotted.active { padding: 8px; }
+
+footer {    
+    background: #284B63;
+}
+footer p {
+    color: #fff;
+    font-size: 1em;
+    text-align: center;
+    padding: 50px;
+}
